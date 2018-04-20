@@ -1,7 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"github.com/name5566/leaf"
+	lconf "leaf/conf"
+	"golang/conf"
+	"golang/game"
+	"golang/gate"
+	"golang/login"
+)
 
 func main() {
-	fmt.Println("this is a test carlo")
+	lconf.LogLevel = conf.Server.LogLevel
+	lconf.LogPath = conf.Server.LogPath
+	lconf.LogFlag = conf.LogFlag
+	lconf.ConsolePort = conf.Server.ConsolePort
+	lconf.ProfilePath = conf.Server.ProfilePath
+
+	leaf.Run(
+		game.Module,
+		gate.Module,
+		login.Module,
+	)
 }
