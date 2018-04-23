@@ -1,0 +1,6 @@
+{
+    "LogLevel": "debug",
+    "LogPath": "",
+    "WSAddr": "127.0.0.1:12580",
+    "MaxConnNum": 20000
+}
