@@ -8,15 +8,14 @@
 <script type="text/javascript">
     var ws = new WebSocket('ws://127.0.0.1:3653')
 
-    ws.onopen = function() {
-        // 发送 Hello 消
-
-            ws.send(JSON.stringify({Hello: {
-                    LoginName: 'leaf1111',
-                    LoginPW: 'pass'
-                }}))
-
-
+    var Data = {
+        LoginName: "Gola1ng.Ltd",
+        LoginPW: "123456",
+    };
+    ws.onopen = function()
+    {
+        // 发送 Hello 消息
+        ws.send(JSON.stringify({UserLogin: Data}))
     }
 </script>
 </body>

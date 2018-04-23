@@ -1,0 +1,8 @@
+CREATE TABLE `game`.`user`  (
+  `id` int(0) NULL AUTO_INCREMENT,
+  `user` varchar(30) NULL DEFAULT '0',
+  `passwd` varchar(50) NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+);
+
+ADD UNIQUE INDEX `user`(`user`) USING BTREE;

@@ -7,14 +7,13 @@ import (
 var Processor = json.NewProcessor()
 
 func init() {
-	Processor.Register(&Hello{})
+	Processor.Register(&UserLogin{})
 }
 
 
 // 一个结构体定义了一个 JSON 消息的格式
 // 消息名为 Hello
-type Hello struct {
+type UserLogin struct {
 	LoginName string
-	LoginPW  string
-	//Name string
+	LoginPW   string
 }

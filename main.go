@@ -2,11 +2,11 @@ package main
 
 import (
 	"github.com/name5566/leaf"
-	lconf "leaf/conf"
-	"golang/conf"
-	"golang/game"
-	"golang/gate"
-	"golang/login"
+	lconf "github.com/name5566/leaf/conf"
+	"server/conf"
+	"server/game"
+	"server/gate"
+	"server/login"
 )
 
 func main() {
