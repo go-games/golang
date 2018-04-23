@@ -1,0 +1,21 @@
+2018/04/15 23:15:03 [release] Leaf 1.1.2 starting up
+2018/04/15 23:15:28 [error  ] interface conversion: interface {} is *gate.agent, not *msg.Hello: goroutine 6 [running]:
+github.com/name5566/leaf/chanrpc.(*Server).exec.func1(0xc04218bdb0, 0xc042030b00, 0xc0421ae2c0)
+	E:/GoCode/src/github.com/name5566/leaf/chanrpc/chanrpc.go:104 +0xcd
+panic(0x6b9d00, 0xc0421ae300)
+	D:/Go/src/runtime/panic.go:491 +0x291
+server/game/internal.rpcNewAgent(0xc0421a8070, 0x1, 0x1)
+	E:/GoCode/src/server/game/internal/chanrpc.go:15 +0x125
+github.com/name5566/leaf/chanrpc.(*Server).exec(0xc042030b00, 0xc0421ae2c0, 0x0, 0x0)
+	E:/GoCode/src/github.com/name5566/leaf/chanrpc/chanrpc.go:117 +0x2ca
+github.com/name5566/leaf/chanrpc.(*Server).Exec(0xc042030b00, 0xc0421ae2c0)
+	E:/GoCode/src/github.com/name5566/leaf/chanrpc/chanrpc.go:131 +0x40
+github.com/name5566/leaf/module.(*Skeleton).Run(0xc0420721e0, 0xc042010e70)
+	E:/GoCode/src/github.com/name5566/leaf/module/skeleton.go:59 +0x2ab
+github.com/name5566/leaf/module.run(0xc042068b10)
+	E:/GoCode/src/github.com/name5566/leaf/module/module.go:54 +0x43
+created by github.com/name5566/leaf/module.Init
+	E:/GoCode/src/github.com/name5566/leaf/module/module.go:40 +0xad
+2018/04/15 23:15:41 [release] Leaf closing down (signal: interrupt)
+2018/04/15 23:15:41 [debug  ] read message: read tcp 127.0.0.1:3363->127.0.0.1:63520: use of closed network connection
+2018/04/15 23:15:41 [debug  ] 关闭 [0xc04219e1e0]
