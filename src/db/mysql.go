@@ -1,10 +1,9 @@
-package main
+package db
 
 import (
 	"database/sql"
 	_"github.com/go-sql-driver/mysql"
 	"github.com/name5566/leaf/log"
-	"fmt"
 )
 var db *sql.DB
 var err error
@@ -18,15 +17,12 @@ var param struct{
 func init() {
 	db,err = sql.Open("mysql","root:@tcp(127.0.0.1:3306)/oto178?charset=utf8")
     checkError(err)
+	//设置mysql最大连接数
 	db.SetMaxOpenConns(2000)
+	//设置mysql最大连接池有可用的从池中获取
 	db.SetMaxIdleConns(1000)
 	err = db.Ping()
 	checkError(err)
-}
-func main()  {
-   Where("member_id='admin'")
-   Table("mvm_member_table")
-   fmt.Printf("%v",Find())
 }
 func checkError(err error){
 	if err != nil {
@@ -34,10 +30,12 @@ func checkError(err error){
 		panic(err)
 	}
 }
-func Where(s string){
-	param.where = s
+func Where(s string,op string,v string){
+	//ToDO
+	param.where = s + op + "'"+v + "'"
 }
 func Table(t string){
+	//ToDO
     param.table = t
 }
 //查询单个数据
