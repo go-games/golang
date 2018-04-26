@@ -12,15 +12,16 @@ type Module struct {
 }
 
 func (m *Module) OnInit() {
+	config:=conf.GetInstance()
 	m.Gate = &gate.Gate{
-		MaxConnNum:      conf.Server.MaxConnNum,
+		MaxConnNum:      config.Server.MaxConnNum,
 		PendingWriteNum: conf.PendingWriteNum,
 		MaxMsgLen:       conf.MaxMsgLen,
-		WSAddr:          conf.Server.WSAddr,
+		WSAddr:          config.Server.WSAddr,
 		HTTPTimeout:     conf.HTTPTimeout,
-		CertFile:        conf.Server.CertFile,
-		KeyFile:         conf.Server.KeyFile,
-		TCPAddr:         conf.Server.TCPAddr,
+		CertFile:        config.Server.CertFile,
+		KeyFile:         config.Server.KeyFile,
+		TCPAddr:         config.Server.TCPAddr,
 		LenMsgLen:       conf.LenMsgLen,
 		LittleEndian:    conf.LittleEndian,
 		Processor:       msg.Processor,
