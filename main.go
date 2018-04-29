@@ -9,11 +9,14 @@ import (
 	"server/login"
 	//"fmt"
 	//"time"
+	"golang/model"
 )
 
 func main() {
 	config := conf.GetInstance()
 	config.Load()
+	model.Init(config.MysqlSplice())
+	//fmt.Println(config.MysqlSplice())
 	lconf.LogLevel = config.Server.LogLevel
 	lconf.LogPath = config.Server.LogPath
 	lconf.LogFlag = conf.LogFlag
@@ -30,6 +33,7 @@ func main() {
 	//
 	//}()
 
+	config.Getconf()
 	leaf.Run(
 		game.Module,
 		gate.Module,
