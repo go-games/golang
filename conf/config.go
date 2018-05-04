@@ -65,7 +65,7 @@ func  GetInstance() *singleton {
 func (s *singleton) Load() (err error) {
 	s.Mu.Lock()
 	defer s.Mu.Unlock()
-	data, err := ioutil.ReadFile("conf/server.json")
+	data, err := ioutil.ReadFile("conf/ser.json")
 	if err != nil {
 		log.Fatal("%v", err)
 	}
@@ -74,6 +74,7 @@ func (s *singleton) Load() (err error) {
 		log.Fatal("%v", err)
 	}
 
+	fmt.Println("ssssssssssssssssss",s.Server)
 	return
 }
 
@@ -101,6 +102,12 @@ func (s *singleton) MysqlSplice() string {
 
 //更新失败不能服务不能挂
 func (s *singleton) Update(key,value string) error {
+	defer func() {
+		if err := recover(); err != nil {
+			log.Error("--recover-- ", err)
+		}
+	}()
+
 	s.Mu.Lock()
 	defer s.Mu.Unlock()
 
@@ -184,7 +191,14 @@ func recursive(parent int) map[string]interface{}{
 	a :=make(map[string]interface{})
 	for _,aa := range confList {
 
+		if aa.Key == "MaxConnNum" || aa.Key == "ConsolePort"{
+			cc ,_ := strconv.Atoi(aa.Value)
+			a[aa.Key] = cc
+			continue
+		}
+
 		a[aa.Key] = aa.Value
+
 
 		if aa.Struct {
 			bb:=recursive(aa.Id)

@@ -10,6 +10,8 @@ import (
 	//"fmt"
 	//"time"
 	"golang/model"
+	"time"
+	"fmt"
 )
 
 func main() {
@@ -23,15 +25,15 @@ func main() {
 	lconf.ConsolePort = config.Server.ConsolePort
 	lconf.ProfilePath = config.Server.ProfilePath
 
-	//go func() {
-	//	for {
-	//	time.Sleep(time.Second*1)
-	//	fmt.Println("aaaaaaaaaaaaaaaaa")
-	//	fmt.Println(config.Server.LogLevel)
-	//	}
-	//
-	//
-	//}()
+	go func() {
+		for {
+		time.Sleep(time.Second*1)
+		fmt.Println("aaaaaaaaaaaaaaaaa")
+		fmt.Println(config.Server.LogLevel)
+		}
+
+
+	}()
 
 	config.Getconf()
 	leaf.Run(
