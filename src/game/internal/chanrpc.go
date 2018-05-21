@@ -2,7 +2,6 @@ package internal
 
 import (
 	"github.com/name5566/leaf/gate"
-	"github.com/name5566/leaf/log"
 )
 
 func init() {
@@ -18,5 +17,4 @@ func rpcNewAgent(args []interface{}) {
 func rpcCloseAgent(args []interface{}) {
 	a := args[0].(gate.Agent)
 	_ = a
-	log.Debug("关闭 %v",args)
 }

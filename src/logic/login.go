@@ -5,7 +5,7 @@ import (
 	"crypto/md5"
 	"io"
 	"fmt"
-	"db"
+	"server/db"
 )
 
 func CheckUser(u string,passwd string) (status bool,err error)  {

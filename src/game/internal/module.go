@@ -12,11 +12,10 @@ var (
 
 type Module struct {
 	*module.Skeleton
-
 }
 
 func (m *Module) OnInit() {
-
+	m.Skeleton = skeleton
 }
 
 func (m *Module) OnDestroy() {
