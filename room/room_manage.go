@@ -8,7 +8,7 @@ import (
 	"time"
 )
 type Room interface {
-	Get(roomid string) bool   //获取房间信息
+	Get(roomid int) bool   //获取房间信息
 }
 
 
