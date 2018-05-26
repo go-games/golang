@@ -160,10 +160,11 @@ type Room_quick_enter struct {
 func room_quick_enter(m *msg.Roomresp) (int ,*room.Room_quick_enter, string) {
 	var roomid string
 	var sit int
-	var ok bool
+	var ok bool  //避免多次创建
 
-	//找到第一个limit
-	fn :=func(key, value interface{}) bool {
+	// 找到第一个limit
+	// 闭包实现
+	fn := func(key, value interface{}) bool {
 		roomid = key.(string)
 		roominfo := value.(room.Room_manager)
 
