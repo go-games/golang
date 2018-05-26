@@ -11,8 +11,8 @@ func main() {
 
 	var a room.Room
 	a =room.NewRoom()
-	a.Get(2000)
-	a.Get()
+	aa,_,:=a.Get(2000)
+
 
 	var user_right_id = "101"
 	var user_left_id = "102"
