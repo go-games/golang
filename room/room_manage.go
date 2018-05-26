@@ -86,19 +86,19 @@ func (r *room_info) Quit(userid string) (int32,error) {
 		log.Debug("更新mongo roominfo")
 		//TODO 更新sit信息  设置最后一个人为房主
 
-		var roomMasterId string
+
 		if r.RoomMasterId == userid {
+
+			var _key string
 			fn := func(key, value interface{}) bool {
-				roomMasterId = key.(string)
-				value.(room_user_info).Sit = 0
+				_key = key.(string)
 				return false
 			}
 
 			//返回false才停止 循环
 			r.RoomUsers.Range(fn)
+			r.RoomMasterId = _key
 		}
-
-		r.RoomMasterId = roomMasterId
 
 	}
 
