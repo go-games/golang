@@ -2,6 +2,7 @@ package msg
 
 import (
 	"github.com/name5566/leaf/network/json"
+	"server/fight"
 )
 
 // 使用默认的 JSON 消息处理器（默认还提供了 protobuf 消息处理器）
@@ -11,6 +12,7 @@ func init() {
 	// 这里我们注册了一个 JSON 消息 Hello
 	Processor.Register(&Hello{})
 	Processor.Register(&Roomresp{})
+	Processor.Register(&FightResp{})
 }
 
 // 一个结构体定义了一个 JSON 消息的格式
@@ -19,10 +21,17 @@ type Hello struct {
 	Name string
 }
 
-
 type Roomresp struct {
 	RoomId   string
 	ServerId string
-	UserId string
-	ProtoId  int  //协议ID 根据id来区分
+	UserId   string
+	ProtoId  int //协议ID 根据id来区分
+}
+
+type FightResp struct {
+	RoomId    string
+	ServerId  string
+	WinUserId int
+	Data      fight.Keyframe
+	ProtoId   int //协议ID 根据id来区分
 }

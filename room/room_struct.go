@@ -138,7 +138,7 @@ type player struct {
 }
 
 
-type createFight struct {
+type CreateFight struct {
 	RoomId int `json:"room_id"`
 	MapId int `json:"map_id"`
 	RedUid int `json:"red_uid"`
