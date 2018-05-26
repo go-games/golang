@@ -20,7 +20,7 @@ func init() {
 
 func readAttribute() {
 	var attributes []attribute
-	data, err := ioutil.ReadFile("C:\\Project\\Go\\src\\server\\fight\\attribute.json")
+	data, err := ioutil.ReadFile("./../conf/attribute.json")
 	if err != nil {
 		log.Panic(err)
 		return
