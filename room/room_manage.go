@@ -8,7 +8,7 @@ import (
 	"time"
 )
 type Room interface {
-	Get(roomid string) (*room_info,bool)    //获取房间信息
+	Get(roomid string) bool   //获取房间信息
 }
 
 
@@ -18,7 +18,6 @@ type Room_manager interface {
 	Quit(userid string) (int32,error)
 	Room_quick_enter() (int,bool)
 	Close() bool
-	Room
 }
 
 
@@ -135,10 +134,40 @@ func (r *room_info) Close() bool {
 
 
 //给战斗模式的接口 用来获取room info  （从room_session获取）
-func (r *room_info) Get(roomid string) (*room_info,bool) {
+func (c *createFight) Get(roomid int) bool {
 	log.Debug("获取房间信息成功")
-	return &room_info{},true
+	r,ok := Session.Load(strconv.Itoa(roomid))
+	if !ok {
+		return false
+	}
+	roominfo := r.(room_info)
+
+	var reduid string
+	fn := func(key, value interface{}) bool {
+		if roominfo.RoomMasterId != key.(string) {
+			reduid = value.(room_user_info).UserId
+			return false
+		}
+		return true
+	}
+
+	//返回false才停止 循环
+	roominfo.RoomUsers.Range(fn)
+
+	c.RoomId = roomid
+	c.MapId = MapID
+	c.RedUid,_ = strconv.Atoi(reduid)
+	c.RedRoleId = 1
+	c.BlueUid,_ = strconv.Atoi(roominfo.RoomMasterId)
+	c.BlueRoleId =0
+
+	return true
 }
+
+func NewRoom() *createFight {
+	return &createFight{}
+}
+
 
 
 //按照纳秒生产一个房间号

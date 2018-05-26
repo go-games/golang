@@ -129,6 +129,20 @@ type room_user_info struct {
 	UserName  string
 	Sit       int   //位置 0为左边 1为右边
 	conn      *websocket.Conn   //保持的连接
+	player
 }
 
 
+type player struct {
+	Pid int   //写死 101 八神  102 火舞
+}
+
+
+type createFight struct {
+	RoomId int `json:"room_id"`
+	MapId int `json:"map_id"`
+	RedUid int `json:"red_uid"`
+	RedRoleId int `json:"red_role_id"`
+	BlueUid int `json:"blue_uid"`
+	BlueRoleId int `json:"blue_role_id"`
+}
