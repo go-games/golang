@@ -34,7 +34,7 @@ type Attribute struct {
 	Energy int    `json:"energy"`
 }
 func init() {
-	var mData []byte
+	var mData,aData []byte
 	data, err := ioutil.ReadFile("conf/server.json")
 	mData,err = ioutil.ReadFile("conf/mongod.json")
 	aData, err = ioutil.ReadFile("conf/attribute.json")
