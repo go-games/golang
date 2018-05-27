@@ -2,7 +2,7 @@ package utils
 
 
 
-type result struct {
+type Result struct {
 	Code int
 	Error string
 	Result interface{}
@@ -10,8 +10,8 @@ type result struct {
 }
 
 
-func Resp_result(code int,inter interface{},err string) *result {
-	r := &result{
+func Resp_result(code int,inter interface{},err string) *Result {
+	r := &Result{
 		Code:code,
 		Error:err,
 		Result:inter,

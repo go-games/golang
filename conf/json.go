@@ -24,16 +24,32 @@ var MongoCfg struct{
 	Port int
 	Database string
 }
+var AttributeMap map[int]Attribute
+
+//角色基础信息
+type Attribute struct {
+	Id     int    `json:"id"`
+	Name   string `json:"name"`
+	PH     int    `json:"ph"`
+	Energy int    `json:"energy"`
+}
 func init() {
 	var mData []byte
 	data, err := ioutil.ReadFile("conf/server.json")
 	mData,err = ioutil.ReadFile("conf/mongod.json")
+	data, err = ioutil.ReadFile("conf/attribute.json")
 	if err != nil {
 		log.Fatal("%v", err)
 	}
+	var attributes []Attribute
 	err = json.Unmarshal(data, &Server)
 	err = json.Unmarshal(mData,&MongoCfg)
+	err = json.Unmarshal(data, &attributes)
 	if err != nil {
 		log.Fatal("%v", err)
+	}
+	AttributeMap = make(map[int]Attribute, len(attributes))
+	for _, v := range attributes {
+		AttributeMap[v.Id] = v
 	}
 }

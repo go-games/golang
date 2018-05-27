@@ -15,7 +15,6 @@ func init() {
 	Processor.Register(&Hello{})
 	Processor.Register(&Roomresp{})
 	Processor.Register(&FightResp{})
-
 	Processor.Register(&p.C_Register{})
 	Processor.Register(&p.C_LoginByPwd{})
 	Processor.Register(&p.RegisterSuccess{})

@@ -29,10 +29,9 @@ func handleFight(args []interface{}) {
 		fmt.Println(figthing)
 	case 2001:
 		//提交战斗中玩家指令
+
 	case 2002:
 		//结算战斗
-	case 2003:
-		//开始战斗
 	case 2004:
 		//退出战斗
 	default:
