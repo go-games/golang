@@ -37,14 +37,14 @@ func init() {
 	var mData []byte
 	data, err := ioutil.ReadFile("conf/server.json")
 	mData,err = ioutil.ReadFile("conf/mongod.json")
-	data, err = ioutil.ReadFile("conf/attribute.json")
+	aData, err = ioutil.ReadFile("conf/attribute.json")
 	if err != nil {
 		log.Fatal("%v", err)
 	}
 	var attributes []Attribute
 	err = json.Unmarshal(data, &Server)
 	err = json.Unmarshal(mData,&MongoCfg)
-	err = json.Unmarshal(data, &attributes)
+	err = json.Unmarshal(aData, &attributes)
 	if err != nil {
 		log.Fatal("%v", err)
 	}
