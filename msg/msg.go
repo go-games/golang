@@ -2,9 +2,8 @@ package msg
 
 import (
 	"github.com/name5566/leaf/network/json"
-	"server/fight"
 	"server/utils"
-	p "server/msg/protocol"//协议，建议放一起
+	p "server/msg/protocol" //协议，建议放一起
 )
 
 // 使用默认的 JSON 消息处理器（默认还提供了 protobuf 消息处理器）
@@ -32,14 +31,14 @@ type Hello struct {
 type Roomresp struct {
 	RoomId   string
 	ServerId string
-	UserId   string
 	ProtoId  int //协议ID 根据id来区分
 }
 
 type FightResp struct {
-	RoomId    string
-	ServerId  string
-	WinUserId int
-	Data      fight.Keyframe
-	ProtoId   int //协议ID 根据id来区分
+	RoomId    string      //房间Id
+	ServerId  string      //服务器ID
+	WinUserId string      //获胜者ID
+	UserId    int         //用户uid
+	Data      interface{} //玩家操作数据
+	ProtoId   int         //协议ID 根据id来区分
 }

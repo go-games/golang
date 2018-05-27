@@ -8,7 +8,7 @@ import (
 	"time"
 )
 type Room interface {
-	Get(roomid int) (*CreateFight,bool)   //获取房间信息
+	Get(roomid string) (*CreateFight,bool)   //获取房间信息
 }
 
 
@@ -134,9 +134,9 @@ func (r *room_info) Close() bool {
 
 
 //给战斗模式的接口 用来获取room info  （从room_session获取）
-func (c *CreateFight) Get(roomid int) (*CreateFight,bool) {
+func (c *CreateFight) Get(roomid string) (*CreateFight,bool) {
 	log.Debug("获取房间信息成功")
-	r,ok := Session.Load(strconv.Itoa(roomid))
+	r,ok := Session.Load(roomid)
 	if !ok {
 		return nil,false
 	}
@@ -154,7 +154,7 @@ func (c *CreateFight) Get(roomid int) (*CreateFight,bool) {
 	//返回false才停止 循环
 	roominfo.RoomUsers.Range(fn)
 
-	c.RoomId = roomid
+	c.RoomId= roomid
 	c.MapId = MapID
 	c.RedUid,_ = strconv.Atoi(reduid)
 	c.RedRoleId = 1

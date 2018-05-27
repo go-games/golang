@@ -139,7 +139,7 @@ type player struct {
 
 
 type CreateFight struct {
-	RoomId int `json:"room_id"`
+	RoomId string `json:"room_id"`
 	MapId int `json:"map_id"`
 	RedUid int `json:"red_uid"`
 	RedRoleId int `json:"red_role_id"`
