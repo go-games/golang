@@ -1,0 +1,7 @@
+{
+  "Username": "game",
+  "Passwd": "golang.ltd",
+  "Domain": "114.55.73.227",
+  "Port": 7770,
+  "Database":"game"
+}
