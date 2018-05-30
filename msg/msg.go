@@ -31,7 +31,8 @@ type Hello struct {
 type Roomresp struct {
 	RoomId   string
 	ServerId string
-	ProtoId  int //协议ID 根据id来区分
+	UserId    string         //用户uid
+	ProtoId   int //协议ID 根据id来区分
 }
 
 type FightResp struct {
