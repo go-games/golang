@@ -31,8 +31,8 @@ type Hello struct {
 type Roomresp struct {
 	RoomId   string
 	ServerId string
-	UserId    string         //用户uid
-	ProtoId   int //协议ID 根据id来区分
+	UserId   string //用户uid
+	ProtoId  int    //协议ID 根据id来区分
 }
 
 type FightResp struct {
@@ -40,6 +40,7 @@ type FightResp struct {
 	ServerId  string      //服务器ID
 	WinUserId string      //获胜者ID
 	UserId    int         //用户uid
+	Index     int64       //帧索引
 	Data      interface{} //玩家操作数据
 	ProtoId   int         //协议ID 根据id来区分
 }

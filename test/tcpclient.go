@@ -23,7 +23,7 @@ func main() {
 	var version int
 	var addr string
 	flag.IntVar(&version, "count", 10000, "print version")
-	flag.StringVar(&addr, "addr", "127.0.0.1:3563", "服务器端地址")
+	flag.StringVar(&addr, "addr", "127.0.0.1:3653", "服务器端地址")
 	flag.Parse()
 
 	data := []byte(`{

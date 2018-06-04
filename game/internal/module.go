@@ -3,6 +3,7 @@ package internal
 import (
 	"github.com/name5566/leaf/module"
 	"server/base"
+	"server/fight"
 )
 
 var (
@@ -15,6 +16,7 @@ type Module struct {
 }
 
 func (m *Module) OnInit() {
+	fight.Run()
 	m.Skeleton = skeleton
 }
 

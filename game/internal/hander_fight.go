@@ -8,7 +8,6 @@ import (
 	"server/room"
 	"server/fight"
 	"server/notify"
-	"strconv"
 )
 
 func handleFight(args []interface{}) {
@@ -25,25 +24,12 @@ func handleFight(args []interface{}) {
 		}
 	case 2001:
 		//提交战斗中玩家指令
-		if m.RoomId == "" {
-			a.WriteMsg(utils.Resp_result(400, "", "参数不完整"))
-			return
+		if m.RoomId != "" {
+			frame := <-fight.H.WorkerPool
+			frame <- fight.Frame{RoomId: m.RoomId, Info: fight.FrameData{Index: m.Index, Order: m.Data}}
+		}else {
+			a.WriteMsg(utils.Resp_result(404, "","房间号不存在"))
 		}
-		var roomInfo room.Room
-		roomInfo = room.NewRoom()
-		info, ok := roomInfo.Get(m.RoomId)
-		if !ok {
-			a.WriteMsg(utils.Resp_result(404, "", "未查询到该房间信息"))
-			return
-		}
-		if info.RedUid == m.UserId {
-			notify.SendOne(m.Data, strconv.Itoa(info.BlueUid))
-		} else if info.BlueUid == m.UserId {
-			notify.SendOne(m.Data, strconv.Itoa(info.RedUid))
-		} else {
-			a.WriteMsg(utils.Resp_result(404, "", "该用户未在房间内"))
-		}
-
 	case 2002:
 		//结算战斗
 		if err := fight.Close(m.RoomId, m.WinUserId); err != nil {
